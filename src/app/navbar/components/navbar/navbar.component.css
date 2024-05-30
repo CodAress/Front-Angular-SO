@@ -1,4 +1,28 @@
+.navbar {
+    height: 60px;
+}
 .example-spacer {
     flex: 1 1 auto;
 }
+/*CSS PARA EL MENU*/
+.menu-title {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+}
+/*
+.menu-item {
+    display: flex;
+    align-items: center;
+}
+*/
   
+.menu-container {
+    width: auto;
+    height: calc(100% - 60px);
+}
+
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}

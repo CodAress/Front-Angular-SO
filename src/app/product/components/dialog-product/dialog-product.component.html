@@ -1,0 +1,69 @@
+
+  <h1 mat-dialog-title class="dialog-title">
+    {{data.productName}}
+    <button mat-icon-button mat-dialog-close class="close-icon" aria-label="close-button with share icon">
+      <mat-icon>close</mat-icon>
+    </button>
+  </h1>
+  
+
+
+<mat-dialog-content class="product-content" >
+  <img class="img-product" [src]="data.productImage" alt="Photo of a {{data.productName}}">
+  
+    <mat-accordion>
+      
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Description
+          </mat-panel-title>
+          <mat-panel-description>
+            View description
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>{{data.productDescription}}</p>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel hideToggle [disabled]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="product-detail-price">
+            Price
+          </mat-panel-title>
+          <mat-panel-description class="product-price">
+            $ {{data.productPrice}} (S/. {{(data.productPrice * converstionRate).toFixed(2)}})
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Debemos bloquear expansion</p>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel hideToggle [disabled]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="product-detail-brand">
+            Brand
+          </mat-panel-title>
+          <mat-panel-description class="product-brand">
+            {{data.productBrand}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Debemos bloquear expansion</p>
+      </mat-expansion-panel>
+      
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Technical specifications
+          </mat-panel-title>
+          <mat-panel-description>
+            View specifications
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>{{data.productTechnicalSpecifications}}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>ADD TO CART</button>
+</mat-dialog-actions>

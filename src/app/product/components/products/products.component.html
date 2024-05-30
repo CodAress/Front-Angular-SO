@@ -1,0 +1,25 @@
+
+<div class=" container responsive-grid">
+
+  @for (item of products; track $index) {
+    <app-card-product 
+    [productName]="item.name"
+    [productDescription]="item.description"
+    [productImage]="item.images[0]"
+    [productPrice]="item.price"
+    [productBrand]="item.brand"
+    [productTechnicalSpecifications]="item.technicalSpecifications"
+    ></app-card-product>
+  }
+</div>
+  
+<!--
+  <app-card-product 
+  [productName]="'Nombre del Producto'"
+  [productDescription]="'Esta es la descripción del producto.'"
+  [productImage]="'url-de-la-imagen-del-producto'"
+  [productPrice]="999.99"
+  [productBrand]="'Marca del Producto'"
+  [productTechnicalSpecifications]="'Especificaciones técnicas del producto.'"
+  ></app-card-product>
+-->
