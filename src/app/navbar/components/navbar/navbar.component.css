@@ -1,5 +1,10 @@
 .navbar {
-    height: 60px;
+    height: 80px;
+}
+.navbar-title{
+    padding-left: 20px;
+    font-size:xx-large;
+    font-weight: 450;
 }
 .example-spacer {
     flex: 1 1 auto;
@@ -19,7 +24,7 @@
   
 .menu-container {
     width: auto;
-    height: calc(100% - 60px);
+    height: calc(100% - 80px);
 }
 
 .example-button-row button,

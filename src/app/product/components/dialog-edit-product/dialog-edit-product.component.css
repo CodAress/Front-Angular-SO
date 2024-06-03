@@ -1,0 +1,11 @@
+.img-product{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 13px;
+}
+mat-form-field{
+    width: 100%;
+}
+.product-content{
+    padding-bottom: 10px;
+}

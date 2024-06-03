@@ -1,0 +1,136 @@
+<h2 mat-dialog-title>Edit product</h2>
+<mat-dialog-content class="product-content">
+
+  <img class="img-product" [src]="data.images[0]" alt="Photo of a {{data.name}}">
+  
+  <mat-accordion>
+    
+    <!--Edit name-->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Name
+        </mat-panel-title>
+        <mat-panel-description>
+          {{data.name}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="data.name">
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <!--Edit category-->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Category
+        </mat-panel-title>
+        <mat-panel-description>
+          {{data.category}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field appearance="outline">
+        <mat-label>Category</mat-label>
+        <input matInput [(ngModel)]="data.category">
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <!--Edit brand-->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Brand
+        </mat-panel-title>
+        <mat-panel-description>
+          {{data.brand}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Select me</mat-label>
+        <mat-select>
+          <mat-option value="option">Option</mat-option>
+        </mat-select>
+        <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Brand</mat-label>
+        <input matInput [(ngModel)]="data.brand">
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <!--Edit price-->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Price
+        </mat-panel-title>
+        <mat-panel-description>
+          ${{data.price}} (S/.{{(data.price * 3.75).toFixed(2)}})
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field appearance="outline">
+        <mat-label>Price</mat-label>
+        <input matInput [(ngModel)]="data.price">
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <!--Edit stock-->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Stock
+        </mat-panel-title>
+        <mat-panel-description>
+          {{data.stock}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field appearance="outline">
+        <mat-label>Stock</mat-label>
+        <input matInput [(ngModel)]="data.stock">
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <!--Edit specifications-->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Specifications
+        </mat-panel-title>
+        <mat-panel-description>
+          Edit specifications
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field appearance="outline">
+        <mat-label>Specifications</mat-label>
+        <input matInput [(ngModel)]="data.specifications">
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <!--Edit images-->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Images
+        </mat-panel-title>
+        <mat-panel-description>
+          Edit images
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field appearance="outline">
+        <mat-label>Images</mat-label>
+        <input matInput [(ngModel)]="data.images[0]">
+      </mat-form-field>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.name" cdkFocusInitial>Ok</button>
+</mat-dialog-actions>

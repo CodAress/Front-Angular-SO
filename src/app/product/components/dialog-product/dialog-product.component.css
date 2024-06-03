@@ -6,6 +6,10 @@
     font-weight: 600;
     color: black;
 }
+    app-img-slider{
+    width: 100%;
+    object-fit: cover;
+  }
   
 .img-product{
     width: 100%;

@@ -14,7 +14,7 @@ import { DialogProductComponent } from '../dialog-product/dialog-product.compone
 export class CardProductComponent {
   @Input() productName!: string;
   @Input() productDescription!: string;
-  @Input() productImage!: string;
+  @Input() productImage!: string[];
   @Input() productPrice!: number;
   @Input() productBrand!: string;
   @Input() productTechnicalSpecifications!: string;

@@ -1,0 +1,13 @@
+<div class=" container responsive-grid">
+
+    @for (item of products; track $index) {
+      <app-card-product 
+      [productName]="item.name"
+      [productDescription]="item.description"
+      [productImage]="item.images"
+      [productPrice]="item.price"
+      [productBrand]="item.brand"
+      [productTechnicalSpecifications]="item.technicalSpecifications"
+      ></app-card-product>
+    }
+  </div>
