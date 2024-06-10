@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialogRef,
@@ -48,13 +48,16 @@ export interface DialogData {
   templateUrl: './dialog-edit-product.component.html',
   styleUrl: './dialog-edit-product.component.css'
 })
-export class DialogEditProductComponent {
+export class DialogEditProductComponent implements OnInit{
+  specificationKeys!: string[];
 
   constructor(
     public dialogRef: MatDialogRef<DialogEditProductComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}
-
+  ngOnInit() {
+    this.specificationKeys = Object.keys(this.data.specifications);
+  }
   onNoClick(): void {
     this.dialogRef.close();
   }

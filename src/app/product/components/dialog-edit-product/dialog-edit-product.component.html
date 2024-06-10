@@ -2,9 +2,9 @@
 <mat-dialog-content class="product-content">
 
   <img class="img-product" [src]="data.images[0]" alt="Photo of a {{data.name}}">
-  
+
   <mat-accordion>
-    
+
     <!--Edit name-->
     <mat-expansion-panel>
       <mat-expansion-panel-header>
@@ -47,7 +47,7 @@
           {{data.brand}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      
+
       <mat-form-field appearance="outline">
         <mat-label>Select me</mat-label>
         <mat-select>
@@ -94,7 +94,6 @@
       </mat-form-field>
     </mat-expansion-panel>
 
-    <!--Edit specifications-->
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -104,10 +103,13 @@
           Edit specifications
         </mat-panel-description>
       </mat-expansion-panel-header>
+      <!--Edit specifications-->
+      @for(key of this.specificationKeys; track $index){
       <mat-form-field appearance="outline">
-        <mat-label>Specifications</mat-label>
-        <input matInput [(ngModel)]="data.specifications">
+        <mat-label>{{key}}</mat-label>
+        <input matInput [(ngModel)]="data.specifications[key]">
       </mat-form-field>
+      }
     </mat-expansion-panel>
 
     <!--Edit images-->
