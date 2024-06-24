@@ -8,7 +8,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatSidenav } from '@angular/material/sidenav';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule } from '@angular/material/list';
-
+import { loginGuard } from '../../../guards/login.guard';
+import { AdminViewService } from '../../service/admin-view.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -18,8 +20,25 @@ import {MatListModule } from '@angular/material/list';
 })
 export class NavbarComponent {
   @ViewChild('drawer') drawer!: MatSidenav;
-  
+  constructor(private adminViewService: AdminViewService, private router:Router){}
+  loginGuard = loginGuard;
   toggleDrawer() {
     this.drawer.toggle();
+  }
+
+  adminAddProduct() {
+    this.adminViewService.changeView('admin-products');
+    this.drawer.toggle();
+  }
+
+  adminAddBrand() {
+    this.adminViewService.changeView('admin-brands');
+    this.drawer.toggle();
+  }
+  logout() {
+    this.router.navigate(['client/products']);
+    window.localStorage.removeItem('role');
+    window.localStorage.removeItem('id_client');
+
   }
 }

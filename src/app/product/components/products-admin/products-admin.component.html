@@ -1,5 +1,15 @@
-<app-table-product
-    [tableName]="tablename"
-  [products]="myProducts" 
-  [conversionRate]="myConversionRate" >
-</app-table-product>
+@if(currentView === 'admin-products'){
+
+  <app-table-product
+  [tableName]="'Products Table'"
+  [conversionRate]="myConversionRate"
+  >
+  </app-table-product>
+}
+@if (currentView === 'admin-brands') {
+
+  <app-table-brand
+  [tableName]="'Brands Table'"
+  >
+  </app-table-brand>
+}

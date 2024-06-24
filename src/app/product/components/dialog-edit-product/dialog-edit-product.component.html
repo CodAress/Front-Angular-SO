@@ -28,13 +28,22 @@
           Category
         </mat-panel-title>
         <mat-panel-description>
-          {{data.category}}
+          {{selectedCategory?.name}}
         </mat-panel-description>
       </mat-expansion-panel-header>
+
       <mat-form-field appearance="outline">
-        <mat-label>Category</mat-label>
-        <input matInput [(ngModel)]="data.category">
+
+        <mat-label>Select me</mat-label>
+        <mat-select [(ngModel)]="selectedCategory" (ngModelChange)="onCategoryChange($event)">
+          @for (category of data.categories; track $index) {
+          <mat-option [value]="category">{{category.name}}</mat-option>
+          }
+        </mat-select>
+        <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+      
       </mat-form-field>
+
     </mat-expansion-panel>
 
     <!--Edit brand-->
@@ -44,21 +53,18 @@
           Brand
         </mat-panel-title>
         <mat-panel-description>
-          {{data.brand}}
+          {{selectedBrand?.name}}
         </mat-panel-description>
       </mat-expansion-panel-header>
 
       <mat-form-field appearance="outline">
         <mat-label>Select me</mat-label>
-        <mat-select>
-          <mat-option value="option">Option</mat-option>
+        <mat-select [(ngModel)]="selectedBrand" (ngModelChange)="onBrandChange($event)">
+          @for (brand of data.brands; track $index) {
+          <mat-option [value]="brand">{{brand.name}}</mat-option>
+          }
         </mat-select>
         <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Brand</mat-label>
-        <input matInput [(ngModel)]="data.brand">
       </mat-form-field>
     </mat-expansion-panel>
 
@@ -134,5 +140,5 @@
 
 <mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.name" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="saveChanges()" [mat-dialog-close]="data.name" cdkFocusInitial>Ok</button>
 </mat-dialog-actions>

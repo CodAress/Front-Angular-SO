@@ -1,0 +1,167 @@
+<h2 mat-dialog-title>Add product</h2>
+
+<mat-dialog-content class="product-content">
+  <img class="img-product" [src]="productRequest.images[0]" alt="Photo of a {{data.name}}">
+  <mat-accordion>
+
+    <!-- Add name -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Name
+        </mat-panel-title>
+        <mat-panel-description>
+          {{productRequest.name}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="productRequest.name">
+      </mat-form-field>
+    </mat-expansion-panel>
+    <!-- Add description -->
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Description
+        </mat-panel-title>
+        <mat-panel-description>
+          Add description
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput [(ngModel)]="productRequest.description"></textarea>
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <!-- Select category -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Category
+        </mat-panel-title>
+        <mat-panel-description>
+          {{selectedCategory?.name}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field appearance="outline">
+        <mat-label>Select me</mat-label>
+        <mat-select [(ngModel)]="selectedCategory" (ngModelChange)="onCategoryChange($event)">
+          @for (category of data.categories; track $index) {
+          <mat-option [value]="category">{{category.name}}</mat-option>
+          }
+        </mat-select>
+        <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <!-- Select brand -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Brand
+        </mat-panel-title>
+        <mat-panel-description>
+          {{selectedBrand?.name}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field appearance="outline">
+        <mat-label>Select me</mat-label>
+        <mat-select [(ngModel)]="selectedBrand" (ngModelChange)="onBrandChange($event)">
+          @for (brand of data.brands; track $index) {
+          <mat-option [value]="brand">{{brand.name}}</mat-option>
+          }
+        </mat-select>
+        <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <!-- Add price -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Price
+        </mat-panel-title>
+        <mat-panel-description>
+          ${{productRequest.price}} (S/.{{(productRequest.price * 3.75).toFixed(2)}})
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field appearance="outline">
+        <mat-label>Price</mat-label>
+        <input matInput type="number" [(ngModel)]="productRequest.price">
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <!-- Add stock -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Stock
+        </mat-panel-title>
+        <mat-panel-description>
+          {{productRequest.stock}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field appearance="outline">
+        <mat-label>Stock</mat-label>
+        <input matInput type="number" [(ngModel)]="productRequest.stock">
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <!-- Add specifications -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Specifications
+        </mat-panel-title>
+        <mat-panel-description>
+          Add specifications
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div *ngFor="let key of specificationKeys">
+        <mat-form-field appearance="outline">
+          <mat-label>{{key}}</mat-label>
+          <input matInput [(ngModel)]="productRequest.specifications[key]">
+        </mat-form-field>
+        <button mat-icon-button (click)="removeSpecification(key)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Specification Key</mat-label>
+        <input matInput [(ngModel)]="newSpecKey">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Specification Value</mat-label>
+        <input matInput [(ngModel)]="newSpecValue">
+      </mat-form-field>
+      <button mat-button (click)="addSpecification()">Add Specification</button>
+    </mat-expansion-panel>
+
+    <!-- Add image -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Images
+        </mat-panel-title>
+        <mat-panel-description>
+          Edit images
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field appearance="outline">
+        <mat-label>Images</mat-label>
+        <input matInput [(ngModel)]="productRequest.images[0]">
+      </mat-form-field>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="saveChanges()" cdkFocusInitial>Ok</button>
+</mat-dialog-actions>

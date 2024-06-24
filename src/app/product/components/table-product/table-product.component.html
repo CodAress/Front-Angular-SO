@@ -46,7 +46,7 @@
 
         <!-- Price Column -->
         <ng-container matColumnDef="actions">
-            <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
             <mat-cell *matCellDef="let element" class="actions-button-row">
                 
                     <button (click)="openViewDialog(element)" mat-mini-fab aria-label="Example icon button with a filter list icon" >
@@ -69,6 +69,6 @@
     </mat-table>
 </div>
 
-<button class="floating-button" mat-fab color="accent" aria-label="Icon button add product">
+<button (click)="openAddDialog()" class="floating-button" mat-fab color="accent" aria-label="Icon button add product">
     <mat-icon>add</mat-icon>
 </button>

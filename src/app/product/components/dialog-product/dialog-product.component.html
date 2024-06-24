@@ -18,6 +18,7 @@
   [autoPlaySpeed]="2000"
   ></app-img-slider>
 -->
+
   
   <img class="img-product" [src]="data.productImage" alt="Photo of a {{data.productName}}">
   
@@ -68,7 +69,13 @@
             View specifications
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <p>{{data.productTechnicalSpecifications}}</p>
+        @for(key of this.specificationKeys; track $index){
+          <mat-list>
+            <mat-divider></mat-divider>
+            <mat-list-item>{{key}} : {{data.productTechnicalSpecifications[key]}}</mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+          }
       </mat-expansion-panel>
     </mat-accordion>
 

@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>Edit brand</h2>
+<mat-dialog-content class="comment-content">
+    <mat-accordion>
+        <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+            Comment
+            </mat-panel-title>
+            <mat-panel-description>
+            {{commentRequest.description}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-form-field appearance="outline">
+            <mat-label>Comment</mat-label>
+            <textarea matInput [(ngModel)]="commentRequest.description"></textarea>
+        </mat-form-field>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+        <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+            Rating
+            </mat-panel-title>
+            <mat-panel-description>
+            {{commentRequest.rating}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-form-field appearance="outline">
+            <mat-label>Rating</mat-label>
+            <input matInput [(ngModel)]="commentRequest.rating">
+        </mat-form-field>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button (click)="onSaveClick()" [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+</mat-dialog-actions>

@@ -2,12 +2,13 @@
 
     @for (item of products; track $index) {
       <app-card-product 
+      [productId]="item.id"
       [productName]="item.name"
       [productDescription]="item.description"
       [productImage]="item.images"
       [productPrice]="item.price"
-      [productBrand]="item.brand"
-      [productTechnicalSpecifications]="item.technicalSpecifications"
+      [productBrand]="getBrandName(item.brand_id)"
+      [productTechnicalSpecifications]="item.specifications"
       ></app-card-product>
     }
   </div>

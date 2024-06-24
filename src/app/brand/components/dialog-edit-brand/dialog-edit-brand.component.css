@@ -1,0 +1,8 @@
+.logo-brand{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 13px;
+}
+mat-form-field{
+    width: 100%;
+}

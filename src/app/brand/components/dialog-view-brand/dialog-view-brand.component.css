@@ -1,0 +1,18 @@
+.dialog-title {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 25px;
+    font-size: 1.5rem;
+    color: black;
+}
+.logo-brand{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 13px;
+}
+.mat-expansion-panel-header[aria-disabled=true] .mat-expansion-panel-header-title, .mat-expansion-panel-header[aria-disabled=true] .mat-expansion-panel-header-description {
+    color: var(--mat-expansion-header-text-color);
+}
+.brand-content{
+    padding-bottom: 10px;
+}

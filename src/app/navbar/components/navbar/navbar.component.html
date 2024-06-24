@@ -4,12 +4,21 @@
     </button>
     <span class="navbar-title">Nerdy Nest</span>
     <span class="example-spacer"></span>
+    @if(loginGuard() == 'DEFAULT' || loginGuard() == 'CLIENT'){
     <button mat-icon-button class="shopping-cart-icon" aria-label="Shopping-cart-button with shopping-cart icon">
       <mat-icon>shopping_cart</mat-icon>
     </button>
-    <button mat-icon-button class="init-sesion-icon" aria-label="Init-sesion-button with share icon" routerLink="/login">
-      <mat-icon>account_circle</mat-icon>
-    </button>
+    }
+    @if(loginGuard() == 'DEFAULT'){
+      <button mat-icon-button class="init-sesion-icon" aria-label="Init-sesion-button with share icon" routerLink="/login">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    }
+    @if(loginGuard() !== 'DEFAULT'){
+      <button mat-icon-button (click)="logout()" class="close-icon" aria-label="Close-button with share icon">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    }
 </mat-toolbar>
 
 <mat-drawer-container class="menu-container">
@@ -24,15 +33,26 @@
     </h6>
 
     <mat-nav-list>
-      <a mat-list-item routerLink="" (click)="toggleDrawer()">All products</a>
-      <a mat-list-item class="option-item" routerLink="" (click)="toggleDrawer()">Mouses</a>
+      @if(loginGuard() == 'CLIENT' || loginGuard() == 'DEFAULT' ){
+
+        <a mat-list-item (click)="toggleDrawer()" [routerLink] = "['client/products']">All products</a>
+        <a mat-list-item (click)="toggleDrawer()">Mouses</a>
         <!--Icono de mouse
-          <mat-icon class="icon-item">mouse</mat-icon>
+        <mat-icon class="icon-item">mouse</mat-icon>
         -->
         
-      <a mat-list-item routerLink="" (click)="toggleDrawer()">Keyboards</a>
-      <a mat-list-item routerLink="" (click)="toggleDrawer()">Monitors</a>
-      <a mat-list-item routerLink="" (click)="toggleDrawer()">Motherboards</a>
+        <a mat-list-item (click)="toggleDrawer()">Keyboards</a>
+        <a mat-list-item (click)="toggleDrawer()">Monitors</a>
+        <a mat-list-item (click)="toggleDrawer()">Motherboards</a>
+      }
+      @if(loginGuard() == 'CLIENT'){
+        <a mat-list-item (click)="toggleDrawer()" [routerLink] = "['']">Comments</a>
+      }
+
+      @if(loginGuard() == 'ADMIN'){
+        <a mat-list-item (click)="adminAddProduct()" [routerLink] = "['admin/products']">Add products</a>
+        <a mat-list-item (click)="adminAddBrand()" [routerLink] = "['admin/products']">Add brands</a>
+      }
     </mat-nav-list>
 
   </mat-drawer>

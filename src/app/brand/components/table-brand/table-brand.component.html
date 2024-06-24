@@ -1,0 +1,45 @@
+<div class="container-table">
+    <div class="container-table-header">
+        <h4 class="table-title">{{tableName}}</h4>
+    </div>
+
+    <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="dataSource">
+        <!-- Position Column -->
+        <ng-container matColumnDef="position" sticky>
+            <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <mat-icon class="example-drag-cursor">reorder</mat-icon>
+                <span>{{element.position}}</span>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+            <mat-cell *matCellDef="let element" class="actions-button-row">
+                <button (click)="openViewDialog(element)" mat-mini-fab aria-label="Example icon button with a filter list icon">
+                    <mat-icon>visibility</mat-icon>
+                </button>
+                <button (click)="openEditDialog(element)" mat-mini-fab aria-label="Example icon button with a filter list icon">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-mini-fab aria-label="Example icon button with a filter list icon">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" cdkDrag [cdkDragData]="row"></mat-row>
+    </mat-table>
+</div>
+
+<button (click)="openAddDialog()" class="floating-button" mat-fab color="accent" aria-label="Icon button add product">
+    <mat-icon>add</mat-icon>
+</button>
