@@ -1,0 +1,78 @@
+<h2 mat-dialog-title>Add brand</h2>
+<h5 mat-dialog-title class="dialog-title">
+    <button mat-icon-button mat-dialog-close class="close-icon" aria-label="close-button with share icon">
+        <mat-icon>close</mat-icon>
+    </button>
+</h5>
+<mat-dialog-content class="brand-content">
+
+    <img class="logo-brand" [src]="data.logo" alt="Photo of a {{data.name}}">
+    <!--
+   <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Name
+        </mat-panel-title>
+        <mat-panel-description>
+          {{productRequest.name}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="productRequest.name">
+      </mat-form-field>
+    </mat-expansion-panel>  
+  -->
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Name
+            </mat-panel-title>
+            <mat-panel-description>
+                {{data.name}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput [(ngModel)]="data.name">
+        </mat-form-field>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Description
+            </mat-panel-title>
+            <mat-panel-description>
+                Add description
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea matInput [(ngModel)]="data.description"></textarea>
+        </mat-form-field>
+    </mat-expansion-panel>
+
+    <!--Logo-->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Logo
+            </mat-panel-title>
+            <mat-panel-description>
+                {{data.logo}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-form-field appearance="outline">
+            <mat-label>Logo</mat-label>
+            <input matInput [(ngModel)]="data.logo">
+        </mat-form-field>
+    </mat-expansion-panel>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button (click)="onSaveClick()" [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+</mat-dialog-actions>

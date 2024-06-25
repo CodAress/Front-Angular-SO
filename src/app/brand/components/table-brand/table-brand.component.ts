@@ -9,6 +9,7 @@ import { CdkDragDrop, moveItemInArray, CdkDrag, CdkDropList } from '@angular/cdk
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { DialogViewBrandComponent } from '../dialog-view-brand/dialog-view-brand.component';
 import { DialogEditBrandComponent } from '../dialog-edit-brand/dialog-edit-brand.component';
+import { DialogAddBrandComponent } from '../dialog-add-brand/dialog-add-brand.component';
 
 @Component({
   selector: 'app-table-brand',
@@ -21,7 +22,8 @@ import { DialogEditBrandComponent } from '../dialog-edit-brand/dialog-edit-brand
     CdkDropList,
     DialogViewBrandComponent,
     MatDialogModule,
-    DialogEditBrandComponent
+    DialogEditBrandComponent,
+    DialogAddBrandComponent
   ],
   templateUrl: './table-brand.component.html',
   styleUrl: './table-brand.component.css'
@@ -102,6 +104,18 @@ export class TableBrandComponent implements OnInit {
   }
 
   openAddDialog(): void{
-    
+    // Implementa la lógica para abrir el diálogo de adición
+    const dialogAdd = this.dialog.open(DialogAddBrandComponent, {
+      data: { 
+        id: '',
+        name: '',
+        description: '',
+        logo: ''
+      }
+    });
+
+    dialogAdd.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }
